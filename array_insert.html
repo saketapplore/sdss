@@ -1,0 +1,38 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+function getInsert(){
+    let data = [1,2,4,5,6];
+    let newEl = parseInt(document.getElementById("newEl").value);
+    const pos = parseInt(document.getElementById("position").value);
+    console.warn(data);
+    
+    for (let i = data.length-1; i >= 0; i--) {
+        if(i >= pos){
+            data[i+1] = data[i];
+            if(i == pos){
+                data[i] = newEl;
+            }
+        }
+    }
+    console.warn(data);
+}
+
+    </script>
+</head>
+<body>
+    
+
+<input id="position" placeholder="position" />
+<input id="newEl" placeholder="new element" />
+
+<button onclick="getInsert()">Insert</button>
+ 
+</body>
+</html> -->
+
