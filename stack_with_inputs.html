@@ -1,0 +1,48 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let data = [];
+        let currentSize = data.length;
+        let max = 5;
+        function push(){
+            const newVal = parseInt(document.getElementById("newEl").value);
+            if(currentSize >= max){
+             alert("you cannot add stack is full")
+            }
+            else {
+            data[currentSize] = newVal;
+            currentSize+=1;
+            document.getElementById("newEl").value = "";
+            console.warn("element added")
+            }
+
+        }
+
+       function pop(){
+        if(currentSize > 0){
+currentSize-=1;
+data.length = currentSize;
+        }else{
+alert("stack is already empty")
+        }
+       }
+
+      function display(){
+          for(let i = 0; i <= currentSize - 1; i++){
+                console.warn(data[i]);
+          }
+      }
+
+    </script>
+</head>
+<body>
+    <input type="text" id="newEl"/>
+    <button onClick="push()">Add</button>
+    <button onClick="pop()">Remove</button>
+    <button onClick="display()">Display</button>
+</body>
+</html>  -->

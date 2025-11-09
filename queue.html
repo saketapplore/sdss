@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let queue = [];
+        let currentSize = queue.length;
+        let max = 5;
+
+        function enqueue(){
+            let newVal = parseInt(document.getElementById('qEl').value);
+            if(currentSize >= max){
+             alert("queue is a full")
+            } else {
+queue[currentSize] = newVal;
+           currentSize++;
+            }
+           
+        }   
+        
+        function dequeue(){
+            if(!isEmpty()){
+            for(let i =0; i<queue.length; i++){
+               queue[i] = queue[i+1];
+            }
+            currentSize--;
+            queue.length = currentSize;
+
+            }else{
+                alert("queue is already empty")
+            }
+
+        }
+
+        function front(){
+            if(!isEmpty()){
+               console.warn(queue[0])
+            } else{
+                alert('queue is already empty')
+            }
+        };
+
+        function rear(){
+            if(!isEmpty()){
+             console.warn(queue[currentSize-1])
+            } else {
+                alert('queue is already empty')
+            }
+        }
+
+ 
+        function isEmpty (){
+            if(currentSize <= 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function display(){
+            console.warn(queue)
+        }
+
+        // enqueue(67);
+        // enqueue(27);
+        // enqueue(77);
+        // enqueue(87);
+        // front();
+        // rear();
+        
+        display();
+
+    </script>
+</head>
+<body>
+    <input type="text" id="qEl"/>
+    <button onClick="enqueue()">Add Element</button>
+    <button onClick="dequeue()">Remove Element</button>
+    <button onClick="display()">Display Element</button>
+    <button onClick="front()">Front Element</button>
+    <button onClick="rear()">Rear Element</button>
+</body>
+</html>
