@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let data = [4, 5, 6, 7, 8, 9];
+        let start = 0;
+        let end = data.length - 1;
+        let find = 8;
+        let position = undefined;
+
+        function recursive(data, start, end) {
+            let mid = Math.floor((start + end) / 2);
+
+            if (data[mid] === find) {
+                position = mid;
+                return true;
+            } else if (data[mid] < find) {
+                recursive(data, mid + 1, end)
+            } else {
+                recursive(data, start, mid - 1);
+            }
+        }
+
+        recursive(data, start, end)
+        console.warn(position);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
