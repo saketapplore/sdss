@@ -60,7 +60,27 @@
                 }
             }
             
-            
+            preOrder(root){
+                if(root){
+                   console.warn(root.value);
+                   this.preOrder(root.left);
+                   this.preOrder(root.right)
+                }
+            } 
+            inOrder(root){
+                if(root){                 
+                   this.preOrder(root.left);
+                   console.warn(root.value);
+                   this.preOrder(root.right)
+                }
+            } 
+            postOrder(root){
+                if(root){                 
+                   this.preOrder(root.left);
+                   this.preOrder(root.right);
+                   console.warn(root.value);
+                }
+            } 
 
         }
 
@@ -71,8 +91,11 @@
         bst.makeTree(30);
         bst.makeTree(40);
         bst.makeTree(23);
-        
-     console.warn(bst.search(bst.root , 30));
+        // bst.preOrder(bst.root);
+        // bst.inOrder(bst.root);
+        bst.postOrder(bst.root);
+
+    //  console.warn(bst.search(bst.root , 30));
 
         // console.warn(bst)
 
