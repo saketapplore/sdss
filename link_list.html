@@ -83,16 +83,32 @@
                 next: nextNode
             }
         }
+        // searchNode(data){
+        //   let result = undefined;
+        //   let lead = this.head;
+        //   let loop = true;
+        //   while(loop){
+        //     lead = lead.next;
+        //     loop = !!lead;
+        //     if(loop && lead.value === data){
+        //       loop = false;
+        //       result = lead;
+        //     } 
+        //   }
+        //   console.warn(result);
+        // }
       }
       let list = new List(200);
+      list.appendNode(300);
       list.appendNode(400);
       list.appendNode(500);
       list.appendNode(600);
       list.appendNode(700);
     //   list.deleteNode(4);
     //   list.traversing();
-    list.insert(2 , 4000);
-    console.warn(list)
+    // list.insert(2 , 4000);
+    list.searchNode(300)
+    // console.warn(list)
     </script>
   </head>
   <body></body>
