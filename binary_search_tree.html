@@ -106,7 +106,7 @@
                 }
             }        
      
-            maxValue(root){
+            maxValue(root){b                                                                                                                                                                                                                                  
                 if (!root.right) {
                     return root.value;
                 } else {
@@ -114,6 +114,30 @@
                 }
             }
     
+            removeData(value){
+                this.root=this.deleteNode(this.root,value)
+            }
+            deleteNode(root,value){
+                if (root===null) {
+                    return null;
+                }
+                if (value<root.value) {
+                    root.left = this.deleteNode(root.left, value)
+                } else if(value>root){
+                    root.right = this.deleteNode(root.right,value);
+                } else{
+                    if (!root.left && !root.right) {
+                        return null;
+                    } else if(!root.left){
+                        return root.right;
+                    } else if(!root.right){
+                        return root.left;
+                    } 
+                    root.value = this.minValue(root.right)
+                    root.right = this.deleteNode(root.right , root.value);                   
+                }
+                return root;
+            }
         }
 
         let bst = new BSTTree();
@@ -124,6 +148,9 @@
         bst.makeTree(30);
         bst.makeTree(40);
         bst.makeTree(23);
+        bst.removeData(5);
+           
+        // bst.bfsTraversing();
     //   console.warn(bst.minValue(bst.root));
     //   console.warn(bst.maxValue(bst.root));
 
