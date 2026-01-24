@@ -81,23 +81,86 @@
                    console.warn(root.value);
                 }
             } 
-
+ 
+            bfsTraversing(){
+             let queue = [];
+             queue.push(this.root);
+             while(queue.length){
+                let current = queue.shift();
+                if (current.left) {
+                    queue.push(current.left)
+                }
+                if(current.right){
+                    queue.push(current.right)
+                }
+                console.warn(current.value);
+                
+             }
+            }
+    
+            minValue(root){
+                if (!root.left) {
+                    return root.value
+                } else {
+                    return this.minValue(root.left)
+                }
+            }        
+     
+            maxValue(root){b                                                                                                                                                                                                                                  
+                if (!root.right) {
+                    return root.value;
+                } else {
+                    return this.maxValue(root.right)
+                }
+            }
+    
+            removeData(value){
+                this.root=this.deleteNode(this.root,value)
+            }
+            deleteNode(root,value){
+                if (root===null) {
+                    return null;
+                }
+                if (value<root.value) {
+                    root.left = this.deleteNode(root.left, value)
+                } else if(value>root){
+                    root.right = this.deleteNode(root.right,value);
+                } else{
+                    if (!root.left && !root.right) {
+                        return null;
+                    } else if(!root.left){
+                        return root.right;
+                    } else if(!root.right){
+                        return root.left;
+                    } 
+                    root.value = this.minValue(root.right)
+                    root.right = this.deleteNode(root.right , root.value);                   
+                }
+                return root;
+            }
         }
 
         let bst = new BSTTree();
         bst.makeTree(20);
         bst.makeTree(10);
         bst.makeTree(5);
+        bst.makeTree(11);
         bst.makeTree(30);
         bst.makeTree(40);
         bst.makeTree(23);
-        // bst.preOrder(bst.root);
-        // bst.inOrder(bst.root);
-        bst.postOrder(bst.root);
+        bst.removeData(5);
+           
+        // bst.bfsTraversing();
+    //   console.warn(bst.minValue(bst.root));
+    //   console.warn(bst.maxValue(bst.root));
 
+        // bst.bfsTraversing();
+     // bst.preOrder(bst.root);
+        // bst.inOrder(bst.root);
+        // bst.postOrder(bst.root);
     //  console.warn(bst.search(bst.root , 30));
 
-        // console.warn(bst)
+        // console.warn(bst.root)
 
     </script>
 </head>
@@ -105,3 +168,21 @@
     
 </body>
 </html>
+
+
+var merge = function(nums1, m, nums2, n) {
+    let i = m - 1;      // last valid element of nums1
+    let j = n - 1;      // last element of nums2
+    let k = m + n - 1;  // last position of nums1
+
+    while (j >= 0) {
+        if (i >= 0 && nums1[i] > nums2[j]) {
+            nums1[k] = nums1[i];
+            i--;
+        } else {
+            nums1[k] = nums2[j];
+            j--;
+        }
+        k--;
+    }
+};
