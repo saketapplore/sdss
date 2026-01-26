@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const nums = [1,2,3,4,5];
+        let k = 3;
+
+        function avgofsubarray(nums , k){
+           const n = nums.length;
+           if (n < k) return [];
+           const result = [];
+           let windowSum = 0;
+
+           for(let i = 0; i < k; i++){
+            windowSum += nums[i];
+           }
+           result.push(windowSum/k);
+
+           for(let i = k ; i < n; i++){
+              windowSum = windowSum + nums[i] - nums[i-k];
+              result.push(windowSum / k);
+           }
+             return result
+        }
+
+        console.log(avgofsubarray(nums , k));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
