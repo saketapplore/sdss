@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+       const nums = [2,3,1,2,4,3];
+       const k = 7;
+
+        function smallestSubArray(nums , k){
+         let left = 0;
+         let sum = 0;
+         let minLength = Infinity;
+         
+         for(let right = 0; right < nums.length; right++){
+              sum += nums[right];
+              while (sum >= k) {
+               minLength = Math.min(minLength, right - left + 1); 
+                sum -= nums[left];
+                 left++;
+             }
+         }
+            return minLength === Infinity ? 0 : minLength;
+        }
+
+        console.log(smallestSubArray(nums , k));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
