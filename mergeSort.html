@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+      function mergeSort(nums){
+        // base case
+        if(nums.length <= 1) return nums;
+
+        // find mid
+
+       const mid = Math.floor(nums.length / 2);
+
+
+        // Divide
+
+        const left = mergeSort(nums.slice(0 , mid));
+        const right = mergeSort(nums.slice(mid));
+
+        return merge(left,right);
+      }
+
+      function merge(left,right){
+        let result = [];
+        let i = 0, j = 0;
+
+        while(i < left.length && j < right.length){
+            if(left[i] < right[j]){
+              result.push(left[i]);
+              i++;
+            } else {
+              result.push(right[j]);
+              j++;
+            }
+        }
+
+          while (i < left.length) {
+  result.push(left[i]);
+  i++;
+}
+
+       
+       while (j < right.length) {
+  result.push(right[j]);
+  j++;
+}
+
+return result;
+
+      }
+
+      
+      const nums = [5,4,9,8];
+
+      console.log(mergeSort(nums));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
