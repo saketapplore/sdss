@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    function findK(nums,k){
+        let heap = [];
+
+        for (let num of nums){
+            heap.push(num);
+            heap.sort((a,b) => a-b);
+            if(heap.length > k) heap.shift(); 
+        }
+        return heap[0];
+    }
+
+      const nums = [5,1,6,2];
+      console.log(findK(nums,2));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
