@@ -24,6 +24,28 @@
         // selectionSort(data);
         // console.warn(data);
 
+        function ssort (nums){
+
+            for(let i = 0; i < nums.length; i++){
+              let minIdx = i;
+              for(let j = i+1 ; j < nums.length; j++){  4,3,2,1
+                 if(nums[j] < nums[minIdx]){
+                    minIdx = j;
+                 }
+              
+                }
+
+               if(minIdx !== i){
+                [nums[i] , nums[minIdx]] = [nums[minIdx] , nums[i]];
+               }
+
+            }
+            return nums;
+        }
+
+        const nums = [5,1,2,4]
+        console.log(ssort(nums));
+
     </script>
 </head>
 <body>
