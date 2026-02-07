@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+function arrayManipulation(queries,n){
+    let diff = new Array(n+2).fill(0);
+
+    for(let[a,b,k] of queries){
+      diff[a] += k;
+      if(b+1 < n) diff[b+1] -= k
+    }
+
+    let counting = 0;
+    let max = 0;
+
+    for(let i = 0; i <= n; i++){
+      counting += diff[i];
+      max = Math.max(counting,max);
+    }
+return max;
+}      
+
+     let n = 5;
+    queries = [
+  [1, 2, 100],
+  [2, 5, 100],
+  [3, 4, 100]
+]
+
+console.log(arrayManipulation(queries,n));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
