@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = [1,4,2,6,3,5,7];
+        let target = 3;
+
+        function linear(arr, target){
+           const n = arr.length;
+
+          for(let i = 0; i < n; i++){
+            if(arr[i] === target){
+                console.log(i);
+                return i;
+            }
+          }
+     return -1;
+        }
+
+        linear(arr, target);
+
+    </script>,
+</head>
+<body>
+    
+</body>
+</html>

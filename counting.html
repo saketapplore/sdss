@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = [4,1,1,3,2,5];
+
+        function counting(arr){
+               if (arr.length === 0) return [];
+
+               let max = Math.max(...arr);
+
+               let count = new Array(max + 1).fill(0);
+
+               // count frequency
+
+               for(let num of arr){
+                     count[num]++;
+               }
+
+               let sorted = [];
+
+               for(let i = 0; i < count.length; i++){
+                   while(count[i] > 0){
+                      sorted.push(i);
+                      count[i]--;
+                   }
+               }
+               console.log(sorted)
+               return sorted;
+        }
+
+        counting(arr);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
