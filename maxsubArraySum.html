@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    //    Normal Brute Force Approach
+
+        //  const arr = [2,-3,6,-5,4,2];
+        //  let n = 6;
+
+        // function maxSubArraySum(arr , n){
+        //     let maxSum = Number.MIN_VALUE;
+        //    for(let start = 0; start < n; start++){
+        //      for(let end = start; end < n; end++){
+        //           let currSum = 0;
+        //           for(let i = start; i <= end; i++){
+        //             currSum += arr[i];
+        //           }
+        //           maxSum = Math.max(maxSum , currSum);
+        //      }
+        //    }
+        //    console.log(maxSum);
+        // }
+
+        //  maxSubArraySum(arr , n);
+
+
+
+
+
+    //  Optimized Brute Force Approach 
+
+    //    const arr = [2,-3,6,-5,4,2];
+    //      let n = 6;
+
+    //      function maxSubArraySum(arr , n){
+    //         let maxSum = Number.MIN_VALUE;
+    //          for(let start = 0; start < n; start++){
+    //             let currSum = 0;
+    //             for(let end = start; end < n; end++){
+    //                  currSum += arr[end];
+    //                  maxSum = Math.max(currSum , maxSum);
+    //             }
+    //          }
+    //          console.log(maxSum);
+    //      }
+      
+    //         maxSubArraySum(arr , n);
+
+
+     // Kadana's Algorithm
+
+        // const arr = [2,-3,6,-5,4,2];
+        // let n = 6;
+
+        // function maxSubArraySum(arr , n){
+        //    let maxSum = Number.MIN_VALUE;
+        //    let currSum = 0;
+        //         for(let i =0; i < n; i++){
+        //             currSum += arr[i];
+        //             maxSum = Math.max(currSum, maxSum);
+                
+        //             if(currSum < 0){
+        //                 currSum = 0;
+        //             }
+
+        //         }
+        //      console.log(maxSum);   
+        // }
+
+        // maxSubArraySum(arr , n);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
