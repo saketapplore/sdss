@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+  function connectedConmponents(n,edges){
+    let graph = Array.from({ length : n }, () => []);
+    let visited = new Array(n).fill(false);
+
+    // create a adjacency list
+
+    for(let [u,v] of edges){
+        graph[u].push(v);
+        graph[v].push(u);
+    }
+
+    function dfs(node){
+        visited[node] = true;
+        for(let nei of graph[node]){
+            if(!visited[nei]) dfs(nei);
+        }
+    }
+
+    let count = 0;
+
+    for(let i=0; i <n; i++){
+        if(!visited[i]){
+            dfs(i);
+            count ++;
+        }
+    }
+    console.log(count);
+return count;
+  }
+    
+
+    let n = 6;
+    let edges = [[0,1] , [1,2], [3,4]];
+
+    console.log(connectedConmponents(n , edges));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
