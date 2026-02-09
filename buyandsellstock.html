@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+       const prices = [7,1,5,3,6,4];
+
+        function buyStock(prices){
+           let minPrice = Infinity;
+           let maxProfit = 0;
+    
+           for(let price of prices){
+              if(price < minPrice){
+                minPrice = price;
+              }
+
+               let profit = price - minPrice;
+           maxProfit = Math.max(maxProfit, profit);
+
+           }
+
+          console.log(maxProfit);
+
+        }
+
+        buyStock(prices);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
