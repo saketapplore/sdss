@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+
+    //     0 =(n) 
+
+
+     // function print(x , n){
+    //     if(n === 0) return 1;
+
+    //     return x * print(x , n - 1);
+        
+    // }   
+
+
+       // 0(log n)
+
+    function print(x, n){
+        if(n == 0) {
+            return 1;
+        }
+
+        let halfPow = print(x, Math.floor(n/2));
+        let halfPowSquare = halfPow * halfPow;
+
+        if(n % 2 != 0){
+            return x * halfPowSquare;
+        }
+        return halfPowSquare;
+
+    }
+
+        let x = 2;
+        let n = 4;
+   console.log(print(x, n));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
