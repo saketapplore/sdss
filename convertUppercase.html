@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+function convertToUppercase(str) {
+let arr = str.split("");
+
+for(let i = 0; i < arr.length; i++ ){
+   let ch = arr[i];
+   if(ch >= 'A' && ch <= 'Z'){
+      continue;
+   } else if(ch >= 'a' && ch <= 'z'){
+     arr[i] = String.fromCharCode(
+        ch.charCodeAt(0) - ('a'.charCodeAt(0) - 'A'.charCodeAt(0))
+     )
+   }
+}
+return arr.join("");
+}
+
+console.log(convertToUppercase("hello"));
+ 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
