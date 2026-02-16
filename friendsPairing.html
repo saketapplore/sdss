@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       function friendsPairing(n){
+           if(n == 1 || n == 2){
+             return n;
+           }
+
+           return friendsPairing(n-1) + (n-1) * friendsPairing(n-2)
+
+        }
+
+        console.log(friendsPairing(3));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
