@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+      function removeDuplicates(str , i = 0 , seen = {} , result = '' ){
+
+        // Base Case
+
+        if(i === str.length) return result;
+
+        let ch = str[i];
+
+        if(!seen[ch]){
+            seen[ch] = true;
+            result += ch;
+        }
+ 
+        return removeDuplicates(str , i+1 , seen , result);
+
+      }
+
+      console.log(removeDuplicates("sattcc"));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
