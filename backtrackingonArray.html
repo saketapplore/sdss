@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    function print(arr , n , i){
+        if(n === i){
+            console.log(arr);
+            return;
+        }
+
+        arr[i] = i + 1;
+        print(arr , n , i+1);
+        arr[i] = arr[i] - 2;
+    }
+
+     const arr = [0,0,0,0,0]
+     const n = 5;
+     print(arr , n , 0);
+     console.log(arr);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
