@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    function gridWays(row , col , n , m){
+   
+        if(row == n-1 && col == m-1 ){
+            return 1;
+        }
+
+        if(row >= n || col >= m){
+            return 0;
+        }
+
+        // right;
+
+        let val1 = gridWays(row, col+1 , n, m);
+
+        // down
+
+        let val2 = gridWays(row+1 , col, n , m);
+
+    
+
+        return val1 + val2
+
+
+    }
+     
+     let n = 3;
+     let m = 3;
+
+     console.log(gridWays(0 , 0 , n , m));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

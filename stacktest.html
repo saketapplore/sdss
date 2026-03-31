@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // stack with Array
+
+        // class Stack {
+
+        //     constructor () {
+        //         this.data = [];
+        //     }
+
+        //     push(item){
+        //         this.data.push(item)
+        //     }
+
+        //     pop(){
+        //         if(this.empty()){
+        //             console.log("Stack is empty")
+        //             return;
+        //         }
+        //         return this.data.pop()
+        //     }
+
+        //     top(){
+        //         if(this.empty()){
+        //             console.log("Stack is empty")
+        //             return;
+        //         }
+        //         return this.data[this.data.length - 1];
+        //     }
+
+        //     empty(){
+        //         return this.data.length === 0
+        //     }
+
+        // }
+
+        // function main (){
+        //   const s = new Stack();
+        //   s.push('a');
+        //   s.push('b');
+        //   s.push('c');
+        //   s.push('d');
+        //   s.push('e');
+
+        //   while(!s.empty()){
+        //     console.log(s.top());
+        //     s.pop()
+        //   }
+
+        // }
+
+        // main()
+
+
+        // Stack with Linked List
+
+        // class Node {
+        //     constructor(value){
+        //         this.value = value;
+        //         this.next = null;
+        //     }
+        // }
+
+        // class Stack {
+        //     constructor(){
+        //         this.topNode = null;
+        //         this.size = 0;
+        //     }
+
+        //     push(item){
+        //       const newNode = new Node(item);
+        //       newNode.next = this.topNode;
+        //       this.topNode = newNode;
+        //       this.size++
+        //     }
+
+        //     pop(){
+        //       if(this.empty()){
+        //         console.log("Stack is empty")
+        //         return;
+        //       }
+        //       const removed = this.topNode.value;
+        //       this.topNode = this.topNode.next;
+        //       this.size --;
+        //       return removed
+        //     }
+
+        //     top(){
+        //      if(this.empty()){
+        //         console.log("Stack is empty")
+        //         return;
+        //       }
+        //       return this.topNode.value;
+        //     }
+
+        //     empty(){
+        //         return this.topNode === null
+        //     }
+
+        //     print(){
+        //         let result = [];
+        //         let curr = this.topNode;
+
+        //         while(curr){
+        //            result.push(curr.value)
+        //            curr = curr.next
+        //         }
+        //       console.log(result.join(" -> "))
+        //     }
+
+        // }
+
+        // function main(){
+        //     const s = new Stack();
+        //     s.push('a');
+        //     s.push('b');
+        //     s.push('c');
+        //     s.push('d');
+        //     s.push('e');
+
+        //     s.print()
+        // }
+
+        // main()
+
+        // class Node{
+        //     constructor(value){
+        //         this.value = value;
+        //         this.next = null;
+        //     }
+        // }
+
+        // class Stack{
+        //     constructor(){
+        //         this.topNode = null;
+        //         this.size = 0;
+        //     }
+
+        //     push(item){
+        //         const newNode = new Node(item);
+        //         newNode.next = this.topNode;
+        //         this.topNode = newNode;
+        //         this.size ++;
+        //     }
+
+        //     empty(){
+        //         return this.topNode === null;
+        //     }
+
+        //     pop(){
+        //         if(this.empty()){
+        //             console.log("Stack is empty")
+        //             return;
+        //         }
+        //         const removed = this.topNode.value;
+        //         this.topNode = this.topNode.next;
+        //         this.size--;
+        //         return removed;
+        //     }
+
+        //     top(){
+        //         if(this.empty()){
+        //             console.log("Stack is empty")
+        //             return;
+        //         }
+        //         return this.topNode.value;
+        //     }
+
+        //     print(){
+        //         let curr = this.topNode;
+        //         const result = []
+
+        //         while(curr){
+        //             result.push(curr.value);
+        //             curr = curr.next
+        //         }
+
+        //         console.log(result.join(" -> "))
+
+        //     }
+
+        // }
+
+        // function main(){
+        //     const s = new Stack();
+        //     s.push('a');
+        //     s.push('b');
+        //     s.push('c');
+        //     s.push('d');
+        //     s.push('e');
+
+        //     s.print()
+
+        // }
+
+        // main()
+
+        class Node {
+            constructor(value) {
+                this.value = value;
+                this.next = null;
+            }
+        }
+
+        class Stack {
+            constructor() {
+                this.topNode = null;
+                this.size = 0;
+            }
+
+            push(item) {
+                const newNode = new Node(item);
+                newNode.next = this.topNode;
+                this.topNode = newNode;
+                this.size++;
+            }
+
+            empty() {
+                return this.topNode === null;
+            }
+
+            top() {
+                if (this.empty()) {
+                    console.log('stack is empty');
+                    return;
+                }
+                console.log(this.topNode.value)
+                return this.topNode.value;
+            }
+
+            pop() {
+                if (this.empty()) {
+                    console.log("stack is empty");
+                    return;
+                }
+                const removed = this.topNode.value;
+                this.topNode = this.topNode.next;
+                this.size--;
+                return removed;
+            }
+
+            print() {
+                let result = [];
+                let curr = this.topNode;
+
+                while (curr) {
+                    result.push(curr.value);
+                    curr = curr.next;
+                }
+                console.log(result.join(" -> "))
+            }
+
+            reverseString(str) {
+                const tempStack = new Stack();
+                for (let ch of str) {
+                    tempStack.push(ch)
+                }
+
+                let result = '';
+
+                while (!tempStack.empty()) {
+                    result += tempStack.pop();
+                }
+
+                return result;
+
+            }
+
+            pushatBottom(s, value) {
+                if (s.empty()) {
+                    s.push(value);
+                    return;
+                }
+
+                let temp = s.pop();
+
+                this.pushatBottom(s, value);
+
+                s.push(temp)
+
+            }
+
+            reverseStack(s) {
+                if (s.empty()) {
+                    return;
+                }
+
+                let temp = s.pop();
+
+                this.reverseStack(s);
+
+                this.pushatBottom(s, temp)
+
+            }
+
+            stockSpan(prices) {
+                let stack = [];
+                let span = new Array(prices.length)
+
+                for (let i = 0; i < prices.length; i++) {
+
+
+                    while (stack.length > 0 && prices[i] > prices[stack[stack.length - 1]]) {
+                        stack.pop()
+                    }
+
+                    if (stack.length === 0) {
+                        span[i] = i + 1;
+                    } else {
+                        span[i] = i - stack[stack.length - 1];
+                    }
+                  stack.push(i)
+                }
+            return span
+            }
+
+
+            nextGreater(arr){
+            let stack = [];
+            let result = new Array(arr.length);
+
+            for(let i = arr.length - 1 ; i >=0; i--){
+                
+              while(stack.length > 0 && stack[stack.length-1] < arr[i]){
+                stack.pop()
+              }
+            
+
+              if(stack.length === 0){
+                result[i] = -1;
+              } else {
+                result[i] = stack[stack.length - 1];
+              }
+
+              stack.push(arr[i])
+
+            }
+
+            return result;
+         }
+
+            validParenthesis(s){
+                let stack = [];
+
+                for(let ch of s){
+                    if(ch === "(" || ch === "{" || ch === "["){
+                        stack.push(ch)
+                    }
+                    else {
+                        if(stack.length === 0) return false;
+
+                        let top = stack.pop();
+
+                        if(ch === ")" && top !== "(" 
+                        || ch === "}" && top !== "{"
+                        || ch === "]" && top !== "["
+                        ) {
+                            return false;
+                        }
+
+                    }
+                }
+               return stack.length === 0;
+             }
+
+            duplicate(str){
+            let stack = [];
+
+            for(let ch of str){
+
+              if (ch === ")") {
+                
+                let count = 0;
+
+                while(stack.length > 0 && stack[stack.length - 1] !== "("){
+                 stack.pop();
+                 count ++;
+                }
+
+                stack.pop();
+
+                if(count <= 1){
+                    return true;
+                }
+
+              } else {
+                stack.push(ch)
+              }
+            }
+          return false;
+         }
+
+            
+
+        }
+
+        function main() {
+            const s = new Stack();
+            // s.push('a');
+            // s.push('b');
+            // s.push('c');
+            // s.push('d');
+
+
+            // console.log(s.stockSpan([100,80,60,85,100]));
+            // console.log(s.nextGreater([4,5,2,10,8]));
+            // console.log(s.validParenthesis("({[]})"))
+            console.log(s.duplicate("((a+b))"))
+            // s.reverseStack(s)
+
+            // s.print()
+
+        }
+
+        main()
+
+    </script>
+
+<body>
+
+</body>
+
+</html>
