@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        class maxHeap {
+            constructor() {
+                this.heap = [];
+            }
+
+            insert(value) {
+                this.heap.push(value);
+                this.heapifyUp();
+            }
+
+            heapifyUp() {
+                let index = this.heap.length - 1;
+                while (index > 0) {
+                    let parentIndex = Math.floor((index - 1) / 2);
+
+                    if (this.heap[index] > this.heap[parentIndex]) {
+                        [this.heap[index], this.heap[parentIndex]] =
+                            [this.heap[parentIndex], this.heap[index]]
+
+                  
+                            index = parentIndex;
+                        } else {
+                        break;
+                    }
+                    }
+            }
+        
+            top(){
+
+                if(this.heap.length === 0){
+                    return null;
+                }
+
+                return this.heap[0];
+            }
+
+            pop(){
+                if(this.heap.length === 0){
+                    return null;
+                }
+
+                if(this.heap.length === 1){
+                    return this.heap.pop();
+                }
+
+                let max = this.heap[0];
+
+                this.heap[0] = this.heap.pop();
+
+                this.heapifyDown(0);
+                return max;
+
+            }
+
+            heapifyDown(index){
+                let length = this.heap.length;
+
+                while(true){
+                    let left = 2 * index + 1;
+                    let right = 2* index + 2;
+                    let largest = index;
+
+                    if(left < length &&  this.heap[left] > this.heap[largest]){
+                        largest = left;
+                    }
+
+                    if(right < length && this.heap[right] > this.heap[largest]){
+                        largest = right;
+                    }
+
+                    if(largest !== index){
+                        [this.heap[index] , this.heap[largest]] = 
+                        [this.heap[largest], this.heap[index]]
+                        index = largest;
+                    } else {
+                        break;
+                    }
+    
+                }
+
+            }
+
+        }
+
+
+        const heap = new maxHeap();
+        heap.insert(5);
+        heap.insert(3);
+        heap.insert(8);
+        heap.insert(1);
+        heap.insert(10);
+        console.log(heap);
+        console.log(heap.pop());
+        // console.log(heap.top());
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
