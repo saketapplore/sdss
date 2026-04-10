@@ -92,6 +92,45 @@
         // }
 
 
+        function heapSort(arr){
+            let n = arr.length;
+
+            for(let i = Math.floor(n/2) -1; i >= 0; i--){
+               heapify(arr,n,i);
+            }
+
+            for(let i = n-1; i >= 0; i--){
+                 [arr[0] , arr[i]] = [arr[i], arr[0]];
+                 heapify(arr,i,0);
+            }
+
+            console.log(arr);
+            return arr;
+        }
+
+        function heapify(arr,n,i){
+            let largest = i;
+            let left = 2 * i + 1;
+            let right = 2 * i + 2;
+
+            if(left < n && arr[left] > arr[largest]){
+                largest = left;
+            }
+
+            if(right < n && arr[right] > arr[largest]){
+                largest = right;
+            }
+
+            if(largest !== i){
+                [arr[i] , arr[largest]] = [arr[largest], arr[i]];
+                heapify(arr,n,largest);
+            }
+
+        }
+
+        let arr = [4, 10, 3, 5, 1];
+heapSort(arr);
+
         // const heap = new maxHeap();
         // heap.insert(5);
         // heap.insert(3);
@@ -102,41 +141,41 @@
         // console.log(heap.pop());
         // console.log(heap.top());
 
-        class priorityQueue {
-            constructor(compare){
-                this.heap = [];
-                this.compare = compare;
-            }
+        // class priorityQueue {
+        //     constructor(compare){
+        //         this.heap = [];
+        //         this.compare = compare;
+        //     }
 
-            insert(value){
-                this.heap.push(value);
-                this.heapifyUp();
-            }
+        //     insert(value){
+        //         this.heap.push(value);
+        //         this.heapifyUp();
+        //     }
 
-            heapifyUp(){
-                let index = this.heap.length - 1;
-                while(index > 0){
-                    let parentIndex = Math.floor((index - 1) / 2);
+        //     heapifyUp(){
+        //         let index = this.heap.length - 1;
+        //         while(index > 0){
+        //             let parentIndex = Math.floor((index - 1) / 2);
 
-                    if(this.compare(this.heap[index], this.heap[parentIndex]) > 0){
-                        [this.heap[index] , this.heap[parentIndex]] = 
-                        [this.heap[parentIndex], this.heap[index]]
+        //             if(this.compare(this.heap[index], this.heap[parentIndex]) > 0){
+        //                 [this.heap[index] , this.heap[parentIndex]] = 
+        //                 [this.heap[parentIndex], this.heap[index]]
 
-                        index = parentIndex
-                    } else {
-                        break;
-                    }
-                }
-            }
+        //                 index = parentIndex
+        //             } else {
+        //                 break;
+        //             }
+        //         }
+        //     }
 
-        }
+        // }
 
 
-        const pq = new priorityQueue((a, b) => a.marks - b.marks);
-        pq.insert({ name: "Alice", marks: 85 });
-        pq.insert({ name: "Bob", marks: 90 });
-        pq.insert({ name: "Charlie", marks: 80 });
-        console.log(pq.heap);
+        // const pq = new priorityQueue((a, b) => a.marks - b.marks);
+        // pq.insert({ name: "Alice", marks: 85 });
+        // pq.insert({ name: "Bob", marks: 90 });
+        // pq.insert({ name: "Charlie", marks: 80 });
+        // console.log(pq.heap);
 
     </script>
 
