@@ -92,44 +92,44 @@
         // }
 
 
-        function heapSort(arr){
-            let n = arr.length;
+//         function heapSort(arr){
+//             let n = arr.length;
 
-            for(let i = Math.floor(n/2) -1; i >= 0; i--){
-               heapify(arr,n,i);
-            }
+//             for(let i = Math.floor(n/2) -1; i >= 0; i--){
+//                heapify(arr,n,i);
+//             }
 
-            for(let i = n-1; i >= 0; i--){
-                 [arr[0] , arr[i]] = [arr[i], arr[0]];
-                 heapify(arr,i,0);
-            }
+//             for(let i = n-1; i >= 0; i--){
+//                  [arr[0] , arr[i]] = [arr[i], arr[0]];
+//                  heapify(arr,i,0);
+//             }
 
-            console.log(arr);
-            return arr;
-        }
+//             console.log(arr);
+//             return arr;
+//         }
 
-        function heapify(arr,n,i){
-            let largest = i;
-            let left = 2 * i + 1;
-            let right = 2 * i + 2;
+//         function heapify(arr,n,i){
+//             let largest = i;
+//             let left = 2 * i + 1;
+//             let right = 2 * i + 2;
 
-            if(left < n && arr[left] > arr[largest]){
-                largest = left;
-            }
+//             if(left < n && arr[left] > arr[largest]){
+//                 largest = left;
+//             }
 
-            if(right < n && arr[right] > arr[largest]){
-                largest = right;
-            }
+//             if(right < n && arr[right] > arr[largest]){
+//                 largest = right;
+//             }
 
-            if(largest !== i){
-                [arr[i] , arr[largest]] = [arr[largest], arr[i]];
-                heapify(arr,n,largest);
-            }
+//             if(largest !== i){
+//                 [arr[i] , arr[largest]] = [arr[largest], arr[i]];
+//                 heapify(arr,n,largest);
+//             }
 
-        }
+//         }
 
-        let arr = [4, 10, 3, 5, 1];
-heapSort(arr);
+//         let arr = [4, 10, 3, 5, 1];
+// heapSort(arr);
 
         // const heap = new maxHeap();
         // heap.insert(5);
@@ -169,6 +169,114 @@ heapSort(arr);
         //     }
 
         // }
+
+        // function nearbyCars(points, k){
+        //     let heap = [];
+        //     function distance (point){
+        //         return point[0] * point[0] + point[1] * point[1]
+        //     }
+
+        //     for(let point of points){
+        //         heap.push(point);
+        //         heap.sort((a,b) => distance(b) - distance(a));
+        //         if(heap.length > k){
+        //             heap.shift();
+        //         }
+
+        //     }
+
+        //     return heap;
+        // }
+
+        // let points = [[5,-1], [3,3], [-2,4]];
+        // let k = 2;
+
+        // console.log(nearbyCars(points, k));
+
+
+        // function connectRopes(ropes){
+    //         let cost = 0;
+
+    //         ropes.sort((a,b) => a - b);
+
+    //         while(ropes.length > 1){
+    //             let first = ropes.shift();
+    //             let second = ropes.shift();
+
+    //             let sum = first + second;
+    //             cost += sum;
+
+    //             ropes.push(sum);
+
+    //                 ropes.sort((a,b) => a - b);
+
+    //         }
+    //    return cost;
+    //     }
+
+    //     ropes = [4, 3, 2, 6]
+    //     console.log(connectRopes(ropes));
+
+    
+//     function weakestSoldier(mat , k){
+//       let arr = [];
+
+//       for(let i = 0; i < mat.length; i++){
+//         let count = mat[i].reduce((a,b) => a+b , 0);
+//         arr.push([count , i]);
+//       }
+
+//       arr.sort((a , b) => {
+//         if(a[0] === b[0]) return a[1] - b[1];
+//         return a[0] - b[0];
+//       })
+
+//      return arr.slice(0,k).map(x => x[1])
+ 
+
+//     }
+
+//     mat = [
+//   [1,1,0,0,0],  // row 0
+//   [1,1,1,1,0],  // row 1
+//   [1,0,0,0,0],  // row 2
+//   [1,1,0,0,0],  // row 3
+//   [1,1,1,1,1]   // row 4
+// ]
+
+// k = 3
+
+// weakestSoldier(mat,k);
+// console.log(weakestSoldier(mat,k));
+
+function slidwindMax(nums, k){
+    let result = [];
+    let pq = [];
+
+    for (let i = 0; i < nums.length; i++) {
+       pq.push([nums[i], i]);
+
+       pq.sort((a,b) => b[0] - a[0]);
+
+       while(pq.length && pq[0][1] <= i - k){
+        pq.shift();
+       }
+
+       if(i >= k-1){
+        result.push(pq[0][0])
+       }
+
+    }
+
+    return result;
+
+}
+
+nums = [1,3,-1,-3,5,3,6,7]
+k = 3
+
+console.log(slidwindMax(nums, k));
+
 
 
         // const pq = new priorityQueue((a, b) => a.marks - b.marks);

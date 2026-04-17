@@ -1,0 +1,154 @@
+0<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // class Node {
+        //     constructor(key, value){
+        //         this.key = key;
+        //         this.value = value;
+        //         this.next = null;
+        //     }
+        // }
+
+        // class HashTable{
+        //     constructor(size = 3){
+        //         this.size = size;
+        //         this.count = 0;
+        //         this.table = new Array(size).fill(null);
+        //     }
+
+        //     hash(key){
+        //         let hash = 0;
+        //         for(let i = 0; i < key.length; i++){
+        //             hash += key.charCodeAt(i);
+        //         }
+        //         return hash % this.size;
+        //     }
+
+        //     rehash(){
+
+        //         console.log("Rehashing...");
+
+        //         let oldTable = this.table;
+        //         this.size = this.size * 2;
+        //         this.table = new Array(this.size).fill(null);
+        //         this.count = 0;
+
+        //         for(let i = 0; i < oldTable.length; i++){
+        //             let temp = oldTable[i];
+        //             while(temp !== null){
+        //                 this.set(temp.key, temp.value);
+        //                 temp = temp.next;
+        //             }
+        //         }
+
+        //     }
+
+        //     set(key, value){
+        //         let index = this.hash(key);
+
+        //         let temp = this.table[index];
+
+        //         while(temp !== null){
+        //             if(temp.key === key){
+        //                 temp.value = value;
+        //                 return;
+        //             }
+        //             temp = temp.next;
+
+        //         }
+
+        //         let newNode = new Node(key,value);
+
+        //         newNode.next = this.table[index];
+        //         this.table[index] = newNode;
+
+        //         this.count++;
+
+        //         let lambda = this.count / this.size;
+
+        //         if(lambda > 1){
+        //             this.rehash();
+        //         }
+
+        //     }
+
+        //     get(key){
+        //         let index = this.hash(key);
+        //         let temp = this.table[index]
+
+        //         while(temp !== null){
+        //             if(temp.key === key){
+        //                 return temp.value;
+        //             }
+        //             temp = temp.next;
+        //         }
+        //         return -1;
+        //     }
+
+        //     remove(key){
+        //         let index = this.hash(key);
+        //         let temp = this.table[index];
+        //         let prev = null;
+
+        //         while(temp !== null){
+        //             if(temp.key === key){
+        //                 if(prev === null){
+        //                   this.table[index] = temp.next
+        //                 }else {
+        //                      prev.next = temp.next;
+        //                 }
+        //                 this.count--;
+        //                 return
+        //             }
+        //             prev = temp;
+        //             temp = temp.next;
+        //         }
+              
+        //     }
+
+        //     print(){
+        //         for(let i = 0; i < this.size; i++){
+        //             let temp = this.table[i];
+        //             let res = "";
+
+        //             while(temp !== null){
+        //                 res += `${temp.key}: ${temp.value} -> `;
+        //                 temp = temp.next;
+        //             }
+
+        //             console.log(i , "=>" , res + "null")
+
+        //         }
+        //     }
+
+
+
+        // }
+
+        // const hashTable = new HashTable();
+        // hashTable.set("name", "John");
+        // hashTable.set("age", 20);
+        // hashTable.set("city", "New York");
+        // hashTable.set("country", "USA");
+        // hashTable.print();
+
+        // Map Concept
+
+        const map = new Map();
+        map.set("name" , "John");
+        map.set("age", 20);
+
+        console.log(map.get("name"));
+        console.log(map.get("age"))
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
