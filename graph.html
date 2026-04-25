@@ -4,15 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <script>
-        let data = [
-            [0,1,1,0],
-            [1,0,1,1],
-            [1,1,0,0],
-            [0,1,0,0]
-        ]
-        console.warn(data);
+
+      class Graph {
+        constructor(){
+            this.adjList = {};
+        }
+
+        addVertex(v){
+            if(!this.adjList[v]){
+                this.adjList[v] = [];
+            }
+        }
+
+        addEdge(v1 , v2){
+            this.addVertex(v1);
+            this.addVertex(v2);
+
+            this.adjList[v1].push(v2);
+            this.adjList[v2].push(v1);
+
+        }
+
+        // bfs(start){
+        //     const visited = {};
+        //     const queue = [start];
+        //     visited[start] = true;
+
+        //     while(queue.length > 0){
+        //         let node = queue.shift();
+        //         console.log(node);
+
+        //         for(let neighbor of this.adjList[node]){
+        //             if(!visited[neighbor]){
+        //                 visited[neighbor] = true;
+        //                 queue.push(neighbor);
+        //             }
+        //         }
+
+        //     }
+
+        // }        
+
+        
+        // dfs(start, visited = {}){
+
+        //     if(!this.adjList[start]) return;
+
+        //     visited[start] = true;
+        //     console.log(start);
+
+        //     for(let neighbor of this.adjList[start]){
+        //         if(!visited[neighbor]){
+        //             this.dfs(neighbor, visited);
+        //         }
+        //     }
+
+        // }
+
+        
+        hasPath(src , dst , visited = {}){
+            if(!this.adjList[src]) return false;
+
+            if(src === dst) return true;
+
+            visited[src] = true;
+
+            for(let neighbor of this.adjList[src]){
+               if(!visited[neighbor]){
+                  if(this.hasPath(neighbor, dst, visited)){
+                    return true;
+                  }
+               }
+            }
+
+        }
+
+        print(){
+            for(let v in this.adjList){
+                console.log(v + " -> " + this.adjList[v].join(", "));
+            }
+        }
+
+        
+        
+    }
+
+      const graph = new Graph();
+      graph.addEdge("a", "b");
+      graph.addEdge("a", "c");
+      graph.addEdge("b", "d");
+      graph.addEdge("c", "e");
+      graph.addEdge("d", "e");
+     
+    //   graph.bfs("a");
+    //   graph.dfs("a");
+        console.log(graph.hasPath("a", "e"));
+    //   graph.print();
+
     </script>
+
 </head>
 <body>
     
