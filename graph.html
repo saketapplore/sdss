@@ -18,14 +18,26 @@
             }
         }
 
-        addEdge(v1 , v2){
-            this.addVertex(v1);
-            this.addVertex(v2);
 
-            this.adjList[v1].push(v2);
-            this.adjList[v2].push(v1);
+        // case of undirected graph
 
-        }
+        // addEdge(v1 , v2){
+        //     this.addVertex(v1);
+        //     this.addVertex(v2);
+
+        //     this.adjList[v1].push(v2);
+        //     this.adjList[v2].push(v1);
+
+        // }
+
+        // case of directed graph
+
+        addEdge(v1, v2){
+    if(!this.adjList[v1]) this.adjList[v1] = [];
+    if(!this.adjList[v2]) this.adjList[v2] = [];
+
+    this.adjList[v1].push(v2); // ✅ only one direction
+}
 
         // bfs(start){
         //     const visited = {};
@@ -64,44 +76,162 @@
         // }
 
         
-        hasPath(src , dst , visited = {}){
-            if(!this.adjList[src]) return false;
+        // hasPath(src , dst , visited = {}){
+        //     if(!this.adjList[src]) return false;
 
-            if(src === dst) return true;
+        //     if(src === dst) return true;
 
-            visited[src] = true;
+        //     visited[src] = true;
 
-            for(let neighbor of this.adjList[src]){
-               if(!visited[neighbor]){
-                  if(this.hasPath(neighbor, dst, visited)){
-                    return true;
-                  }
+        //     for(let neighbor of this.adjList[src]){
+        //        if(!visited[neighbor]){
+        //           if(this.hasPath(neighbor, dst, visited)){
+        //             return true;
+        //           }
+        //        }
+        //     }
+
+        // }
+
+        countComponents(){
+            let visited = {};
+            let count = 0;
+
+            for(let node in this.adjList){
+               if (!visited[node]) {
+                  this.dfs(node , visited)
+                  count++;
                }
+            }
+            console.log(count)
+  return count;
+        }
+
+        dfs(start, visited){
+            visited[start] = true;
+            
+            for(let neighbor of this.adjList[start]){
+              if(!visited[neighbor]){
+                this.dfs(neighbor , visited)
+              }
             }
 
         }
+
 
         print(){
             for(let v in this.adjList){
                 console.log(v + " -> " + this.adjList[v].join(", "));
             }
         }
+       
+        // Cycle Detection in Undirected Graph
 
-        
+        // hasCycle(){
+        //     let visited = {};
+
+        //     for(let node in this.adjList){
+        //         if(!visited[node]){
+        //             if(this.dfsCycle(node, visited, null)){
+        //                 return true;
+        //             }
+        //         }
+        //     }
+        //     return false;
+        // }
+
+        // dfsCycle(node, visited, parent){
+        //     visited[node] = true;
+
+        //     for(let neighbor of this.adjList[node]){
+        //         if(!visited[neighbor]){
+        //             if(this.dfsCycle(neighbor, visited, node)){
+        //                 return true;
+        //             }
+
+        //         }
+
+        //         else if(neighbor !== parent){
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+
+        // Cycle Detection in Directed Graph
+
+        hasCycle(){
+            let visited = {};
+            let recStack = {};
+
+            for(let node in this.adjList){
+                 if(!visited[node]){
+                   if(this.dfsCycleDirected(node, visited, recStack)){
+                    return true;
+                   }
+                 }
+            }
+
+            return false;
+
+        }
+
+        dfsCycleDirected(node, visited, recStack){
+            visited[node] = true;
+            recStack[node] = true;
+
+            let neighbors = this.adjList[node] || [];
+
+            for(let neighbor of neighbors){
+                if(!visited[neighbor]){
+                    if(this.dfsCycleDirected(neighbor, visited, recStack)){
+                        return true;
+                    }
+                }
+                else if(recStack[neighbor]){
+                    return true;
+                }
+            }
+
+            recStack[node] = false;
+            return false;
+
+        }
+
         
     }
 
       const graph = new Graph();
-      graph.addEdge("a", "b");
-      graph.addEdge("a", "c");
-      graph.addEdge("b", "d");
-      graph.addEdge("c", "e");
-      graph.addEdge("d", "e");
+    //   graph.addEdge("a", "b");
+    //   graph.addEdge("a", "c");
+    //   graph.addEdge("b", "d");
+    //   graph.addEdge("c", "e");
+    //   graph.addEdge("d", "e");
+
+    //   graph.addEdge("A","B");
+    //   graph.addEdge("C","D");
      
+    //   console.log("Disconnected Components:", graph.countComponents());
+
+    //   graph.addEdge("A","B");
+    //   graph.addEdge("B","C");
+    //   graph.addEdge("C","D");
+    //   console.log("Has Cycle:", graph.hasCycle());
+
+
+
     //   graph.bfs("a");
     //   graph.dfs("a");
-        console.log(graph.hasPath("a", "e"));
+        // console.log(graph.hasPath("a", "e"));
     //   graph.print();
+
+    let g = new Graph();
+
+g.addEdge("A","B");
+g.addEdge("B","C");
+g.addEdge("C","D"); // cycle
+
+console.log(g.hasCycle()); // true
 
     </script>
 
