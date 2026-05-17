@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+// MCM - Recursion
+
+// function mcm(arr, i , j){
+
+//     if(i === j){
+//         return 0;
+//     }
+
+//     let minCost = Infinity;
+
+//     for(let k = i; k <=j-1; k++){
+
+//         let cost1 = mcm(arr, i , k);
+//         let cost2 = mcm(arr, k+1, j);
+
+//         let cost3 = arr[i-1] * arr[k] * arr[j];
+
+//         let finalCost = cost1 + cost2 + cost3;
+
+//         minCost = Math.min(minCost, finalCost)
+
+//     }
+
+//     return minCost;
+
+// }
+
+// let arr = [1, 2 , 3 , 4];
+// let n = arr.length;
+
+// console.log(
+//     mcm(arr, 1 , n-1)
+// )
+
+// MCM - Memoization
+
+
+// function mcmMem(arr, i , j , dp){
+
+//     if(i === j){
+//         return 0;
+//     }
+
+//     if(dp[i][j] !== -1){
+//         return dp[i][j];
+//     }
+
+//     let minCost = Infinity
+
+//     for(let k = i; k <=j-1; k++){
+
+//         let cost1 = mcmMem(arr, i , k , dp);
+//         let cost2 = mcmMem(arr, k+1, j , dp);
+//         let cost3 = arr[i-1] * arr[k] * arr[j];
+
+//         let finalCost = cost1 + cost2 + cost3;
+
+//         minCost = Math.min(finalCost, minCost);
+
+//     }
+
+//     return minCost;
+
+// }
+
+// let arr = [1,2,3,4];
+// let n = arr.length;
+// let dp = Array.from( {length : n}, () => new Array(n).fill(-1) )
+// console.log(mcmMem(arr, 1 , n-1 , dp))
+
+
+// Minimum Partioning
+
+// function getMinDiff(nums) {
+
+//     // total sum
+//     let totSum = 0;
+
+//     for (let el of nums) {
+//         totSum += el;
+//     }
+
+//     let n = nums.length;
+
+//     // half sum
+//     let W = Math.floor(totSum / 2);
+
+//     // dp table
+//     let dp = Array.from(
+//         { length: n + 1 },
+//         () => new Array(W + 1).fill(0)
+//     );
+
+//     // build table
+//     for (let i = 1; i <= n; i++) {
+
+//         for (let j = 1; j <= W; j++) {
+
+//             // can include
+//             if (nums[i - 1] <= j) {
+
+//                 dp[i][j] = Math.max(
+
+//                     // include
+//                     nums[i - 1] +
+//                     dp[i - 1][j - nums[i - 1]],
+
+//                     // exclude
+//                     dp[i - 1][j]
+//                 );
+
+//             } else {
+
+//                 dp[i][j] =
+//                     dp[i - 1][j];
+//             }
+//         }
+//     }
+
+//     // subset sums
+//     let grp1Sum = dp[n][W];
+
+//     let grp2Sum =
+//         totSum - grp1Sum;
+
+//     // minimum difference
+//     return Math.abs(
+//         grp1Sum - grp2Sum
+//     );
+// }
+
+
+// // ---------- RUN ----------
+// let nums = [1, 6, 11, 5];
+
+// console.log(
+//     getMinDiff(nums)
+// );  
+
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
